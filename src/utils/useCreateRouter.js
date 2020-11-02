@@ -6,9 +6,9 @@ const createRoutes = (routes) => {
         if (item.children && item.children.length) {
             return createRoutes(item.children)
         } else if (item.componentPath) {
+            const Component = lazy(() => import(`@/${item.componentPath}`));
             return (<Route path={item.path} render={(routerData) => {
-                const ComponentName = lazy(() => import(`@/${item.componentPath}`));
-                return <Suspense fallback={<div>Loading...</div>}><ComponentName {...routerData}></ComponentName></Suspense>
+                return <Suspense fallback={<div>Loading...</div>}><Component {...routerData}></Component></Suspense>
             }
             } key={item.path} exact />)
         } else {

@@ -1,7 +1,7 @@
 import { Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import useCreateRoutes from '@/utils/useCreateRouter'
-
 import logo from './assets/images/logo.svg';
 import './App.css';
 
@@ -15,6 +15,10 @@ function App() {
     <div className="App">
 
       <header className="App-header">
+        <div>
+          <Link to="/home">首页</Link>
+          <Link to="/profile">我的</Link>
+        </div>
         <Switch>
           {routesList}
         </Switch>

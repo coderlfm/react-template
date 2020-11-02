@@ -1,7 +1,12 @@
-## 默认开启路径别名
-## 打包不生成 sourceMap 文件
-## 动态配置路由表路由
 
+## TODO LIST
+
+[x] 默认开启路径别名
+[x] 打包不生成 sourceMap 文件
+[x] 动态配置路由表路由
+[]  动态配置组件路由
+[]  状态管理库使用redux
+[]  动态引入组件store
 
 
 # Getting Started with Create React App
