@@ -1,6 +1,6 @@
 
-const devBaseURL = "http://139.196.156.77:9501/admin/v1/api/";
-const proBaseURL = "http://139.196.156.77:9501/admin/v1/api/";
+const devBaseURL = "http://127.0.0.1:8888/";
+const proBaseURL = "http://127.0.0.1:8888/";
 
 
 export const BASE_URL = process.env.NODE_ENV === 'development' ? devBaseURL : proBaseURL;

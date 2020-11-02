@@ -1,5 +1,4 @@
 import axios from 'axios';
-import intl from 'react-intl-universal'
 
 import { BASE_URL, TIMEOUT } from "./config";
 
@@ -12,11 +11,7 @@ function request(config) {
 
   //响应拦截
   instance.interceptors.response.use(res => {
-    if (res.data.code === 502) {
-      localStorage.removeItem("Authorization")
-      message.warning(intl.get('network.response.login.error_msg'))
-      window.location.replace('/login')
-    }
+    
     return res.data
   })
 
