@@ -1,3 +1,9 @@
+## 默认开启路径别名
+## 打包不生成 sourceMap 文件
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
