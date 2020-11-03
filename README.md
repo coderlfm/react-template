@@ -6,7 +6,10 @@
 [x] 动态配置路由表路由
 []  动态配置组件路由
 []  状态管理库使用redux
-[]  动态引入组件store
+[x]  动态引入组件store
+[]  样式代码使用node-scss
+
+
 
 
 # Getting Started with Create React App

@@ -2,8 +2,8 @@ import { Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 import useCreateRoutes from '@/utils/useCreateRouter'
-import logo from './assets/images/logo.svg';
-import './App.css';
+
+import './App.scss';
 
 import routes from '@/router'
 
@@ -13,28 +13,27 @@ function App() {
 
   return (
     <div className="App">
-
-      <header className="App-header">
-        <div>
-          <Link to="/home">首页</Link>
-          <Link to="/profile">我的</Link>
-        </div>
+      <header>
+        <Link to="/home">首页</Link>
+        <Link to="/profile">我的</Link>
+      </header>
+      <main>
         <Switch>
           {routesList}
         </Switch>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+
+      </main>
+      <footer>
+
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/coderlfm/react-template"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          To view the document
         </a>
-      </header>
+      </footer>
     </div>
   );
 }

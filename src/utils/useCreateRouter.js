@@ -19,7 +19,7 @@ const createRoutes = (routes) => {
 }
 
 /**
- * 创建路由hooks
+ * 创建路由
  * @param {Array} routes 
  */
 const useCreateRoutes = (routes) => createRoutes(routes)

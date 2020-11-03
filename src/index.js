@@ -7,6 +7,7 @@ import store from '@/store'
 
 import App from './App';
 import '@/assets/css/normalize.css'
+import '@/assets/css/reset.css'
 
 ReactDOM.render(
   <React.StrictMode>
