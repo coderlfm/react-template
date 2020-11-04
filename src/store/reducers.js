@@ -8,13 +8,21 @@ import { combineReducers } from 'redux'
  * 
  */
 const reducers = {};
-const dirs = require.context('@/pages', true, /reducer\.js$/)
+const pageDirs = require.context('@/pages', true, /reducer\.js$/)
+const componentDirs = require.context('@/components', true, /reducer\.js$/)
 
-dirs.keys().forEach((dirPath) => {
+pageDirs.keys().forEach((dirPath) => {
     const dirName = dirPath.split('./')[1].split('/')[0];
     dirPath = dirPath.substring(1, dirPath.length)
-    // console.log(dirPath);
+  
     reducers[dirName] = require('../pages' + dirPath).default
+})
+
+componentDirs.keys().forEach((dirPath) => {
+    const dirName = dirPath.split('./')[1].split('/')[0];
+    dirPath = dirPath.substring(1, dirPath.length)
+  
+    reducers[dirName] = require('../components' + dirPath).default
 })
 
 
