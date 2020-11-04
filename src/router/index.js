@@ -1,4 +1,4 @@
-
+import { createRouters } from '@/utils/utils';
 /**
  * 初始化默认菜单，可根据后端返回的menu的来动态渲染菜单
  * 此处componentPath 为字符串，可动态渲染
@@ -26,34 +26,56 @@
        ]    
  */
 
+const files = require.context('@/pages', true, /index\.jsx/);
+const routers = createRouters(files);
+// const routers = files.keys().map(item => {
+//     // console.log(item);
+//     // console.log(item.replace('./', '').replace('/index.jsx', ''));
+
+//     const path = '/' + item.replace('./', '').replace('/index.jsx', '');
+//     const componentPath = 'pages' + item.replace('.', '');
+//     return {
+//         path,
+//         key: path,
+//         title: '首页',
+//         icon: 'HomeOutlined',
+//         componentPath,
+//         exact: true,
+//         children: []
+//     }
+// })
+
+// console.log(routers);
+
 export default function routes() {
-    return [
-        {
-            path: "/",
-            key: "/",
-            title: '',
-            icon: 'HomeOutlined',
-            componentPath: "pages/home",
-            component: "pages/home",
-            exact: true,
-        },
-        {
-            path: "/home",
-            key: "/home",
-            title: '首页',
-            icon: 'HomeOutlined',
-            componentPath: "pages/home",
-            exact: true,
-            children: []
-        },
-        {
-            path: '/profile',
-            key: '/profile',
-            title: '我的',
-            icon: 'TrophyOutlined',
-            componentPath: 'pages/profile',
-            exact: true,
-            children: []
-        },
-    ]
+    return routers
+    // return [
+    //     {
+    //         path: "/",
+    //         key: "/",
+    //         title: '',
+    //         icon: 'HomeOutlined',
+    //         componentPath: "pages/home",
+    //         component: "pages/home",
+    //         exact: true,
+    //     },
+    //     {
+    //         path: "/home",
+    //         key: "/home",
+    //         title: '首页',
+    //         icon: 'HomeOutlined',
+    //         componentPath: "pages/home",
+    //         exact: true,
+    //         children: []
+    //     },
+    //     {
+    //         path: '/profile',
+    //         key: '/profile',
+    //         title: '我的',
+    //         icon: 'TrophyOutlined',
+    //         componentPath: 'pages/profile',
+    //         exact: true,
+    //         children: []
+    //     },
+    // ]
 }

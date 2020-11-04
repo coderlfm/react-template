@@ -1,7 +1,7 @@
 import { Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-import useCreateRoutes from '@/utils/useCreateRouter'
+import { useCreateRoutes } from '@/utils/utils'
 
 import './App.scss';
 
@@ -24,7 +24,6 @@ function App() {
 
       </main>
       <footer>
-
         <a
           className="App-link"
           href="https://github.com/coderlfm/react-template"
