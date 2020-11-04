@@ -1,8 +1,9 @@
 import { Suspense, lazy } from 'react';
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
+// import { Switch } from 'react-router-dom'
 
 /**
- * 生成路由表
+ * 生成路由配置表
  * @param {Objest} paths 
  */
 const createRouters = (paths) => {
@@ -38,10 +39,10 @@ const createRouters = (paths) => {
 
         for (let i = 0; i < routers.length; i++) {
             for (let j = 0; j < rootRouter.length; j++) {
-       
+
                 if (routers[i].split(rootRouter[j].path) && routers[i].split(rootRouter[j].path)[1]?.split('/').length === 2) {
                     const index = rootRouter[j].children.forEach(item => routers[i].split(item.path)[1]?.split('/').length === 2)
-    
+
                     if (index > -1) {
                         rootRouter[j].children[index].push({
                             path: routers[i],
@@ -69,7 +70,7 @@ const createRouters = (paths) => {
                     }
                     break;
                 } else if (routers[i].split(rootRouter[j].path) && routers[i].split(rootRouter[j].path)[1]?.split('/').length > 2) {
- 
+
                     if (i + 1 === routers.length) {
                         createChildren(rootRouter[j].children, JSON.parse(JSON.stringify(routers)).slice(i))
                     } else {
@@ -110,11 +111,12 @@ const createRoutes = (routes) => {
 
 }
 
+
 /**
  * 创建路由
  * @param {Array} routes 
  */
-const useCreateRoutes = (routes) => createRoutes(routes)
+const useCreateRoutes = (routes) => <Switch> {createRoutes(routes)} </Switch>
 
 
 export { useCreateRoutes, createRouters }

@@ -1,15 +1,12 @@
-import { Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 import { useCreateRoutes } from '@/utils/utils'
-
-import './App.scss';
-
 import routes from '@/router'
+import './App.scss';
 
 function App() {
 
-  const routesList = useCreateRoutes(routes())
+  const routesList = useCreateRoutes(routes)
 
   return (
     <div className="App">
@@ -17,12 +14,9 @@ function App() {
         <Link to="/home">首页</Link>
         <Link to="/profile">我的</Link>
       </header>
-      <main>
-        <Switch>
-          {routesList}
-        </Switch>
 
-      </main>
+      <main> {routesList} </main>
+
       <footer>
         <a
           className="App-link"

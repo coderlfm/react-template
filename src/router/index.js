@@ -1,8 +1,8 @@
 import { createRouters } from '@/utils/utils';
 /**
  * 初始化默认菜单，可根据后端返回的menu的来动态渲染菜单
- * 此处componentPath 为字符串，可动态渲染
- * 设置children 和 key的原因为需要做树形控件的选择
+ * componentPath 为组件路径
+ * children 和 key 为兼容后台管理项目tree组件
  * 
  */
 
@@ -27,55 +27,6 @@ import { createRouters } from '@/utils/utils';
  */
 
 const files = require.context('@/pages', true, /index\.jsx/);
-const routers = createRouters(files);
-// const routers = files.keys().map(item => {
-//     // console.log(item);
-//     // console.log(item.replace('./', '').replace('/index.jsx', ''));
+// const routers = createRouters(files);
+export default createRouters(files);
 
-//     const path = '/' + item.replace('./', '').replace('/index.jsx', '');
-//     const componentPath = 'pages' + item.replace('.', '');
-//     return {
-//         path,
-//         key: path,
-//         title: '首页',
-//         icon: 'HomeOutlined',
-//         componentPath,
-//         exact: true,
-//         children: []
-//     }
-// })
-
-// console.log(routers);
-
-export default function routes() {
-    return routers
-    // return [
-    //     {
-    //         path: "/",
-    //         key: "/",
-    //         title: '',
-    //         icon: 'HomeOutlined',
-    //         componentPath: "pages/home",
-    //         component: "pages/home",
-    //         exact: true,
-    //     },
-    //     {
-    //         path: "/home",
-    //         key: "/home",
-    //         title: '首页',
-    //         icon: 'HomeOutlined',
-    //         componentPath: "pages/home",
-    //         exact: true,
-    //         children: []
-    //     },
-    //     {
-    //         path: '/profile',
-    //         key: '/profile',
-    //         title: '我的',
-    //         icon: 'TrophyOutlined',
-    //         componentPath: 'pages/profile',
-    //         exact: true,
-    //         children: []
-    //     },
-    // ]
-}
