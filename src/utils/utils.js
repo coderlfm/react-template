@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom'
-// import { Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
+
 
 /**
  * 生成路由配置表
@@ -10,7 +10,7 @@ const createRouters = (paths) => {
     const router = []
     let childRouter = [];
 
-    //生成一级路由
+    //一级路由
     paths.keys().forEach(item => {
         const path = '/' + item.replace('./', '').replace('/index.jsx', '');
         const componentPath = 'pages' + item.replace('.', '');
@@ -19,7 +19,7 @@ const createRouters = (paths) => {
             router.push({
                 path,
                 key: path,
-                title: '首页',
+                title: 'title',
                 icon: 'HomeOutlined',
                 componentPath,
                 exact: true,
@@ -41,13 +41,14 @@ const createRouters = (paths) => {
             for (let j = 0; j < rootRouter.length; j++) {
 
                 if (routers[i].split(rootRouter[j].path) && routers[i].split(rootRouter[j].path)[1]?.split('/').length === 2) {
-                    const index = rootRouter[j].children.forEach(item => routers[i].split(item.path)[1]?.split('/').length === 2)
+                    const current = routers[i]
+                    const index = rootRouter[j].children.findIndex(item => current.split(item.path)[1]?.split('/').length === 2)
 
                     if (index > -1) {
                         rootRouter[j].children[index].push({
                             path: routers[i],
                             key: routers[i],
-                            title: '首页',
+                            title: 'title',
                             icon: 'HomeOutlined',
                             componentPath: 'pages' + routers[i],
                             exact: true,
@@ -59,7 +60,7 @@ const createRouters = (paths) => {
                         rootRouter[j].children.push({
                             path: routers[i],
                             key: routers[i],
-                            title: '首页',
+                            title: 'title',
                             icon: 'HomeOutlined',
                             componentPath: 'pages' + routers[i],
                             exact: true,
@@ -116,7 +117,7 @@ const createRoutes = (routes) => {
  * 创建路由
  * @param {Array} routes 
  */
-const useCreateRoutes = (routes) => <Switch> {createRoutes(routes)} </Switch>
+const useCreateRoutes = (routes) => createRoutes(routes)
 
 
 export { useCreateRoutes, createRouters }

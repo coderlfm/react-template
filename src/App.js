@@ -13,6 +13,7 @@ function App() {
       <header>
         <Link to="/home">首页</Link>
         <Link to="/profile">我的</Link>
+        <Link to="/login">登录</Link>
       </header>
 
       <main> {routesList} </main>
