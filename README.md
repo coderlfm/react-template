@@ -1,14 +1,14 @@
 
 ## TODO LIST
 
-* [x] 默认开启路径别名
 * [x] 打包不生成 sourceMap 文件
-* [x] 动态配置路由
-* [ ]  动态引入组件路由
-* [x]  状态管理库使用redux
-* [x]  动态引入组件store
-* [ ]  样式代码使用node-scss
-
+* [x] 动态配置路由表(兼容 Antd Tree)
+* [x] 动态引入组件路由
+* [x] 动态引入组件 `store`
+* [x] 状态管理使用 `redux`
+* [x] 二次封装 `axios`
+* [x] 配置路径 `@` 别名，cs vode `@` 路径提示
+* [x] 样式使用node-scss
 
 
 
