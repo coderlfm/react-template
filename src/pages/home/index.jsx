@@ -2,7 +2,7 @@ import React, { memo, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { getTestDataApi } from '@/services/home'
-import { changeTokenAction, changeuserInfoActionAsync } from './store/actionCreators'
+import { actions } from './store/slice'
 
 export default memo(function Home() {
 
@@ -13,7 +13,7 @@ export default memo(function Home() {
      * 设置token
      */
     const changeToken = () => {
-        dispatch(changeTokenAction('#123456abc'));
+        dispatch(actions.changeTokenAction('#123456abc'));
     }
 
     /**
@@ -27,16 +27,17 @@ export default memo(function Home() {
     /**
      * redux-thunk获取测试数据
      */
-    const getTestDataAsnc = () => dispatch(changeuserInfoActionAsync())
-    
+    const getTestDataAsnc = () => dispatch(actions.changeuserInfoActionAsync({ username: 'admin', password: '123456' }))
+
+
 
     return (
         <div>
             <h2>Home</h2>
-            <button onClick={changeToken}>设置token</button><br />
+            <button onClick={changeToken}>redux设置token</button><br />
             <button onClick={getTestDataAsnc}>redux异步请求数据</button><br />
             <button onClick={getTestData}>请求数据</button><br />
-   
+
             {
                 userInfo &&
                 <>

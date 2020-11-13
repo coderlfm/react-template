@@ -11,16 +11,11 @@ function request(config) {
 
   //响应拦截
   instance.interceptors.response.use(res => {
-    
     return res.data
   })
 
   //请求拦截
   instance.interceptors.request.use(function (res) {
-
-    if (localStorage.getItem("Authorization")) {
-      res.headers["Authorization"] = "Bearer " + localStorage.getItem("Authorization")
-    } 
 
     return res
   }, function (error) {
