@@ -32,8 +32,8 @@ const reducers = {
 const changeuserInfoActionAsync = createAsyncThunk(
     'home/changeuserInfoActionAsync',
     async (data, thunkAPI) => {
-        const response = await getTestDataApi(data);
-        return response.data;
+        const res = await getTestDataApi(data);
+        return res.data;
     }
 )
 

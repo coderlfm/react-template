@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { BASE_URL, TIMEOUT } from "./config";
 
 
@@ -15,12 +14,11 @@ function request(config) {
   })
 
   //请求拦截
-  instance.interceptors.request.use(function (res) {
+  instance.interceptors.request.use((res) => {
 
     return res
-  }, function (error) {
+  }, (error) => {
 
-    // Do something with request error
     return Promise.reject(error)
   })
 
