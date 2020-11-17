@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { useCreateRoutes } from '@/utils/utils'
 import routes from '@/router'
-import './App.scss';
+import './App.less';
 
 function App() {
 
