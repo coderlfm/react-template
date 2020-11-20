@@ -1,20 +1,23 @@
 import React, { memo, useState } from 'react'
-import { useDispatch } from 'react-redux'
 
 import { getTestDataApi } from '@/services/home'
-import { actions } from './store/slice'
+import useToken from '@/store/useToken'
 
 export default memo(function Home() {
 
-    const dispatch = useDispatch();
     const [userInfo, setUserInfo] = useState(null)
+    const Token = useToken.useContainer()
 
     /**
      * 设置token
      */
-    const changeToken = () => {
-        dispatch(actions.changeTokenAction('#123456abc'));
-    }
+    const changeToken = () => Token.changeToken('#123456abc')
+
+    /**
+     * 设置token
+     */
+    const clearToken = () => Token.changeToken('')
+    
 
     /**
      * 获取测试数据
@@ -24,18 +27,15 @@ export default memo(function Home() {
         setUserInfo(result);
     }
 
-    /**
-     * redux-thunk获取测试数据
-     */
-    const getTestDataAsnc = () => dispatch(actions.changeuserInfoActionAsync({ username: 'admin', password: '123456' }))
-
-
 
     return (
         <div>
-            <h2>Home</h2>
-            <button onClick={changeToken}>redux设置token</button><br />
-            <button onClick={getTestDataAsnc}>redux异步请求数据</button><br />
+            <h2>Home</h2><br />
+
+            <h4>token：{Token.token}</h4><br />
+            <button onClick={changeToken}>设置token</button>&nbsp;
+            <button onClick={clearToken}>清空token</button><br />
+            
             <button onClick={getTestData}>请求数据</button><br />
 
             {

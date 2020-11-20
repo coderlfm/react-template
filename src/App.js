@@ -1,34 +1,37 @@
 import { Link } from 'react-router-dom'
+import useToken from '@/store/useToken'
 
 import { useCreateRoutes } from '@/utils/utils'
 import routes from '@/router'
-import './App.less';
+import './App.scss';
 
 function App() {
 
   const routesList = useCreateRoutes(routes)
 
   return (
-    <div className="App">
-      <header>
-        <Link to="/home">首页</Link>
-        <Link to="/profile">我的</Link>
-        <Link to="/login">登录</Link>
-      </header>
+    <useToken.Provider>
+      <div className="App">
+        <header>
+          <Link to="/home">首页</Link>
+          <Link to="/profile">我的</Link>
+          <Link to="/login">登录</Link>
+        </header>
 
-      <main> {routesList} </main>
+        <main> {routesList} </main>
 
-      <footer>
-        <a
-          className="App-link"
-          href="https://github.com/coderlfm/react-template"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          To view the document
+        <footer>
+          <a
+            className="App-link"
+            href="https://github.com/coderlfm/react-template"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            To view the document
         </a>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </useToken.Provider>
   );
 }
 
