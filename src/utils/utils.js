@@ -25,6 +25,22 @@ const createRouters = (paths) => {
                 exact: true,
                 children: []
             })
+
+        } else if (!paths.keys().filter(pathItme => pathItme.includes(`./${item.split('/')[1]}/index.jsx`)).length) {
+            const exists = router.some(rItem => rItem.path === `/${item.split('/')[1]}`)
+            if (!exists) {
+                router.push({
+                    path: `/${item.split('/')[1]}`,
+                    key: `/${item.split('/')[1]}`,
+                    title: 'title',
+                    icon: 'HomeOutlined',
+                    componentPath: '',
+                    exact: true,
+                    children: []
+                })
+            }
+            childRouter.push(item.replace('.', '').replace('/index.jsx', ''))
+
         } else {
             childRouter.push(item.replace('.', '').replace('/index.jsx', ''))
         }
@@ -86,6 +102,14 @@ const createRouters = (paths) => {
 
     childRouter = childRouter.sort();
     createChildren(router, childRouter)
+    router.push({
+        path: '*',
+        key: "/",
+        title: 'title',
+        icon: 'HomeOutlined',
+        componentPath: 'pages' + '/404',
+
+    })
     return router
 }
 
@@ -96,10 +120,18 @@ const createRouters = (paths) => {
  */
 const createRoutes = (routes) => {
     return routes.map(item => {
-        const ComponentName = lazy(() => import(`@/${item.componentPath}`));
-        const Component = (<Route path={item.path} render={(routerData) => {
-            return <Suspense fallback={<div>Loading...</div>}><ComponentName {...routerData}></ComponentName></Suspense>
-        }} key={item.path} exact />)
+        let ComponentName,
+            Component
+
+        if (item.componentPath) {
+            ComponentName = lazy(() => import(`@/${item.componentPath}`));
+            Component = (<Route path={item.path} render={(routerData) => {
+                return <Suspense fallback={<div>Loading...</div>}><ComponentName {...routerData}></ComponentName></Suspense>
+            }} key={item.path} exact />)
+        } else {
+            ComponentName = null;
+            Component = null;
+        }
 
         if (item.children && item.children.length) {
             return [Component, ...createRoutes(item.children)]
